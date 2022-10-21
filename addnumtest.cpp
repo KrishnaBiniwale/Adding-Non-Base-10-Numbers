@@ -4,15 +4,39 @@
 using namespace std;
 
 int main() {
+   char s = 'c';
+   while (s != 'q') {
+      string num1;
+      cout << "Enter a number: ";
+      cin >> num1;
+      if (cin.fail()) {
+         return 1;
+      }
+      int base1;
+      cout << "Enter the base of the number: ";
+      cin >> base1;
+      if (cin.fail()) {
+         return 1;
+      }
+      LargeInt a(num1, base1);
 
-   LargeInt a("FF", 16);
-   LargeInt b("FF", 16);
-   cout << a.to_string() << endl;
-   cout << b.to_string() << endl;
-   b.add(a);    // increase b by a
-   cout << b.to_string() << endl; // prints 55
-   /*.add(a);    // increase b by a
-   cout << b.to_string() << endl; // prints 68*/
-   
+      string num2;
+      cout << "Enter another number: ";
+      cin >> num2;
+      if (cin.fail()) {
+         return 1;
+      }
+      LargeInt b(num2, base1);
+
+      cout << "#1: " << a.to_string() << endl;
+      cout << "#2: " << b.to_string() << endl;
+      b.add(a);
+      cout << "#1 + #2: " << b.to_string() << endl;
+
+
+      cout << "\nPress c to continue or q to quit: ";
+      cin >> s;
+      cout << endl;
+   }
    return 0;
 }
