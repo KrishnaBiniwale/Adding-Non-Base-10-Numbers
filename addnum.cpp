@@ -4,9 +4,11 @@
 
 using namespace std;
 
+LargeInt::LargeInt() {
+  base = 0;
+}
 
-
-LargeInt::LargeInt(string s, int b) {
+LargeInt::LargeInt(string &s, int b) {
   for (size_t i = s.size(); i > 0; i--) {
     v.push_back(s[i-1]);
   }
@@ -14,16 +16,7 @@ LargeInt::LargeInt(string s, int b) {
 }
 
 
-std::string LargeInt::to_string() const {
-  string s = "";
-  for (size_t i = 0; i < v.size(); i++) {
-    s = v[i] + s;
-  }
-  return s;
-}
-
-
-void LargeInt::add(LargeInt l) {
+LargeInt LargeInt::operator+(LargeInt &l) {
   vector<char> l1 = v;
   vector<char> l2 = l.v;
   vector<char> result;
@@ -67,5 +60,17 @@ void LargeInt::add(LargeInt l) {
     }
     i++;
   }
-  v = result;
+  LargeInt res;
+  res.base = base;
+  res.v = result;
+  return res;
+}
+
+ostream& operator<<(ostream& os, const LargeInt &l) {
+  string s = "";
+  for (size_t i = 0; i < l.v.size(); i++) {
+    s = l.v[i] + s;
+  }
+  os << s;
+  return os;
 }

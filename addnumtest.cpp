@@ -28,10 +28,10 @@ int main() {
       }
       LargeInt b(num2, base1);
 
-      cout << "#1: " << a.to_string() << endl;
-      cout << "#2: " << b.to_string() << endl;
-      b.add(a);
-      cout << "#1 + #2: " << b.to_string() << endl;
+      cout << "#1: " << a << endl;
+      cout << "#2: " << b << endl;
+      LargeInt c = a + b;
+      cout << "#1 + #2: " << c << endl;
 
 
       cout << "\nPress c to continue or q to quit: ";

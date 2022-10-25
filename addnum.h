@@ -2,12 +2,14 @@
 #define LARGEINT_H
 #include <string>
 #include <vector>
+#include <iostream>
 
 class LargeInt {
 public:
-    LargeInt(std::string s, int base=10); // convert string to LargeInt
-    std::string to_string() const; // get string representation
-    void add(LargeInt); // add another LargeInt to this one
+    LargeInt();
+    LargeInt(std::string &s, int base=10); // convert string to LargeInt
+    LargeInt operator+(LargeInt&); // adds LargeInts
+    friend std::ostream& operator<<(std::ostream&, const LargeInt&); // prints LargeInt
 private:
     int base;
     std::vector<char> v;
